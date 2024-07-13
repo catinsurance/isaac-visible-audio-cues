@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "commonjs",
+    "noImplicitReturns": true,
+    "baseUrl": "./src",
+    "rootDir": "./src",
+    "declaration": false,
+    "composite": false,
+    "sourceMap": false,
+    "declarationMap": false,
+    "inlineSourceMap": false,
+    "noUnusedLocals": true,
+    "downlevelIteration": true,
+    "esModuleInterop": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "noImplicitOverride": true,
+    "noUncheckedIndexedAccess": true,
+    "outDir": "dist",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": false,
+    "paths": {
+      "~/*": ["./*"],
+      "*": ["*"]
+    },
+    "types": [
+      "@typescript-to-lua/language-extensions",
+      "isaac-typescript-definitions",
+      "node"
+    ]
+  },
+  "include": [
+    "./src"
+  ]
+}
