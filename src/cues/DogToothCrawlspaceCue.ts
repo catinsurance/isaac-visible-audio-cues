@@ -4,6 +4,7 @@ import { doesSomePlayerHaveItem } from "~/doesSomePlayerHaveItem";
 import { CueTypeAnimationName } from "~/CueTypeAnimationName";
 import { CueAnimationName } from "~/CueAnimationName";
 import { CueRenderer } from "~/CueRenderer";
+import { once } from "~/once";
 
 export class DogToothCrawlspaceCue implements Cue {
   private readonly renderer = new CueRenderer(CueTypeAnimationName.Info, CueAnimationName.DogToothCrawlspace);
@@ -12,8 +13,9 @@ export class DogToothCrawlspaceCue implements Cue {
     return this.renderer;
   }
 
-  public register(mod: Mod, evaluate: () => void): void {
-    mod.AddCallback(ModCallback.POST_NEW_ROOM, evaluate);
+  public register(mod: Mod, trigger: () => void): void {
+    mod.AddCallback(ModCallback.POST_UPDATE, once(mod, trigger));
+    mod.AddCallback(ModCallback.POST_NEW_ROOM, trigger);
   }
 
   public evaluate(): boolean {

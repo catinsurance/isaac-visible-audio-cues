@@ -26,16 +26,14 @@ export class Renderer {
     const hudOffsetX = Options.HUDOffset * Renderer.HUD_OFFSET_X_MULTIPLIER;
     const hudOffsetY = Options.HUDOffset * Renderer.HUD_OFFSET_Y_MULTIPLIER;
 
-    ctxs.forEach((ctx, idx) => {
-      if (!ctx.active) {
-        return;
-      }
-
-      ctx.cue.getRenderer().render(
-        Isaac.GetScreenWidth() + Game().ScreenShakeOffset.X - hudOffsetX - Renderer.SCREEN_OFFSET,
-        Isaac.GetScreenHeight() + Game().ScreenShakeOffset.Y - hudOffsetY - Renderer.SCREEN_OFFSET - Renderer.ROW_GAP * idx,
-        ctx.frame,
-      );
-    });
+    ctxs
+      .filter((ctx) => ctx.active)
+      .forEach((ctx, idx) => {
+        ctx.cue.getRenderer().render(
+          Isaac.GetScreenWidth() + Game().ScreenShakeOffset.X - hudOffsetX - Renderer.SCREEN_OFFSET,
+          Isaac.GetScreenHeight() + Game().ScreenShakeOffset.Y - hudOffsetY - Renderer.SCREEN_OFFSET - Renderer.ROW_GAP * idx,
+          ctx.frame,
+        );
+      });
   }
 }

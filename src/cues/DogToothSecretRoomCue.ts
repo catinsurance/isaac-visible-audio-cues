@@ -6,6 +6,7 @@ import { CueTypeAnimationName } from "~/CueTypeAnimationName";
 import { doesSomePlayerHaveItem } from "~/doesSomePlayerHaveItem";
 import { CueRenderer } from "~/CueRenderer";
 import { CueAnimationName } from "~/CueAnimationName";
+import { once } from "~/once";
 
 export class DogToothSecretRoomCue implements Cue {
   public readonly renderer = new CueRenderer(CueTypeAnimationName.Info, CueAnimationName.DogToothSecretRoom);
@@ -14,8 +15,9 @@ export class DogToothSecretRoomCue implements Cue {
     return this.renderer;
   }
 
-  public register(mod: Mod, evaluate: () => void): void {
-    mod.AddCallback(ModCallback.POST_NEW_ROOM, evaluate);
+  public register(mod: Mod, trigger: () => void): void {
+    mod.AddCallback(ModCallback.POST_UPDATE, once(mod, trigger));
+    mod.AddCallback(ModCallback.POST_NEW_ROOM, trigger);
   }
 
   public evaluate(): boolean {
@@ -39,6 +41,6 @@ export class DogToothSecretRoomCue implements Cue {
         || room.Data?.Type === RoomType.SUPER_SECRET
       ));
 
-    return (adjacentSecretRooms.some((room) => !room.Clear));
+    return (adjacentSecretRooms.some((room) => (room.VisitedCount === 0)));
   }
 }

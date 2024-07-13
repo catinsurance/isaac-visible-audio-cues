@@ -2,6 +2,6 @@ import type { CueRenderer } from "~/CueRenderer";
 
 export interface Cue {
   getRenderer(): CueRenderer;
-  register(mod: Mod, evaluate: () => void): void;
+  register(mod: Mod, trigger: () => void): void;
   evaluate(): boolean;
 }
