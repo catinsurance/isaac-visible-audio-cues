@@ -5,7 +5,7 @@
 
 *__Visible Audio Cues__* is a tiny game modification for *The Binding of Isaac: Rebirth* that adds UI indicators for events represented with sound cues only. It is designed to improve accessibility for hearing-impaired players and players with the game muted.
 
-[🔗 View *Visible Audio Cues+* on Steam](https://steamcommunity.com/sharedfiles/filedetails/?id=3288668288)
+[🔗 View *Visible Audio Cues* on Steam](https://steamcommunity.com/sharedfiles/filedetails/?id=3288668288)
 
 ## ❤️ Contributing
 If you encounter any issue related to *Visible Audio Cues*, feel free to [open a *GitHub* issue](https://github.com/aleksander-ciesielski/isaac-visible-audio-cues/issues/new). Before submitting, make sure you have included the problem description, reproduction steps, and the log file.
